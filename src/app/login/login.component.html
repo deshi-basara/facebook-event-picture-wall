@@ -1,0 +1,40 @@
+<section class="hero is-info is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Hello my friend
+      </h1>
+      <h2 class="subtitle">
+        Insert your Facebook-Event and -Access-Token.
+      </h2>
+
+      <!-- Login form -->
+      <form (ngSubmit)="onSubmit()">
+        <!-- Event id -->
+        <p class="control has-icon">
+          <input class="input" type="number"
+            placeholder="Event-Id"
+            name="event"
+            required
+            [(ngModel)]="loginModel.event">
+          <i class="fa fa-facebook"></i>
+        </p>
+
+        <!-- Access token -->
+        <p class="control has-icon has-addons">
+          <input class="input is-expanded" type="text"
+            placeholder="Access Token with 'user_event'-permission"
+            name="token"
+            required
+            [(ngModel)]="loginModel.token">
+          <i class="fa fa-key"></i>
+          <a href="https://developers.facebook.com/tools/explorer/" target="_blank" class="button">
+            Get Access Token
+          </a>
+        </p>
+
+        <button class="button" type="submit">Make it happen ...</button>
+      </form>
+    </div>
+  </div>
+</section>
