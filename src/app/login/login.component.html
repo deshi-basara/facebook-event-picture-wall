@@ -5,7 +5,7 @@
         Hello my friend
       </h1>
       <h2 class="subtitle">
-        Insert your Facebook-Event and -Access-Token.
+        Insert your Event-Id and FB-Access-Token.
       </h2>
 
       <!-- Login form -->
@@ -23,7 +23,7 @@
         <!-- Access token -->
         <p class="control has-icon has-addons">
           <input class="input is-expanded" type="text"
-            placeholder="Access Token with 'user_event'-permission"
+            placeholder="0Auth access token with 'user_event'-permission"
             name="token"
             required
             [(ngModel)]="loginModel.token">
@@ -35,6 +35,15 @@
 
         <button class="button" type="submit">Make it happen ...</button>
       </form>
+
     </div>
   </div>
 </section>
+
+<!-- Feedback messages -->
+<div class="notification"
+  *ngIf="notificationMessage"
+  [ngClass]="{ 'is-danger': errorNotification, 'is-success': successNotification }">
+  <button class="delete" (click)="notificationMessage = null"></button>
+  {{ notificationMessage }}
+</div>

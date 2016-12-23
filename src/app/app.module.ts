@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { Ng2Webstorage } from 'ng2-webstorage';
 
 import { AppComponent } from './app.component';
 import { WallComponent } from './wall/wall.component';
@@ -18,11 +19,11 @@ const appRoutes :Routes = [
   },
   {
     path: '',
-    component: LoginComponent
+    component: WallComponent
   },
   {
     path: '**',
-    component: LoginComponent
+    component: WallComponent
   }
 ];
 
@@ -34,6 +35,7 @@ const appRoutes :Routes = [
   ],
   imports: [
     BrowserModule,
+    Ng2Webstorage,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
