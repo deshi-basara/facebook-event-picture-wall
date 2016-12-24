@@ -2,11 +2,64 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 
-  background-color: #363636;
+  background-color: #141414;
 
   background-repeat: no-repeat;
   background-position: center top;
   background-size: auto 100%;
   overflow: hidden;
+
+  .wall-header {
+    display: flex;
+
+    height: 80px;
+    width: 100%;
+
+    text-align: center;
+
+    z-index: 2;
+
+    .title {
+      line-height: 80px;
+      width: 100%;
+      display: inline-block;
+      color: #ffffff;
+    }
+  }
+
+  .wall-pictures {
+    position: relative;
+    display: flex;
+    flex: 1;
+
+    width: 100%;
+
+    z-index: 1;
+  }
+
+  .wall-desc {
+    height: 80px;
+    width: 100%;
+
+    z-index: 2;
+
+    text-align: center;
+
+    p {
+      color: #ffffff;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      padding-bottom: 7px;
+      font-size: 11px;
+    }
+  }
 }

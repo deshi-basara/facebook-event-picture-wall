@@ -14,11 +14,14 @@ export class WallComponent implements OnInit {
   // facebook
   event :number;
   token :string;
+  pullInterval :number = 20000;
 
-  // diashow
-  imageList :Array<any>;
-  imageInterval :number = 3000; // ms
-  imageLink :string;
+  // slider
+  imageList :Array<any> = [];
+  imagePosition :number = 0;
+  imageDescName :string;
+  imageDescTime :any;
+  imageDesc :any = null;
 
   constructor(private localStorage :LocalStorageService,
               private facebookService :FacebookService,
@@ -29,17 +32,19 @@ export class WallComponent implements OnInit {
     this.event = this.localStorage.retrieve('event');
     this.token = this.localStorage.retrieve('token');
 
-    console.log(this.event);
-    console.log(this.token);
+    this.pullUpdates();
+  }
 
+  pullUpdates() :void {
     // check if entered data is (still) valid
     this.facebookService.getEventImages(this.event, this.token)
       .subscribe(
         (response) => {
-          this.imageList = response.data;
+          this.imageList = response.data.slice().reverse();
 
-          // start diashow
-          this.startDiashow();
+          setTimeout(() => {
+            this.pullUpdates();
+          }, this.pullInterval);
         },
         (error) => {
           // oh no, not valid ... redirect to /login
@@ -48,22 +53,9 @@ export class WallComponent implements OnInit {
       )
   }
 
-  startDiashow() :void {
-    // insert first image
-    this.nextImage();
-
-    setInterval(() => {
-      // fetch new image if there are still image in the queue
-      if (this.imageList.length > 0 ) {
-        this.nextImage();
-      }
-    }, this.imageInterval);
-  }
-
-  nextImage() :void {
-    // get latest image
-    const latestImage = this.imageList.pop();
-    this.imageLink = latestImage.images[0].source;
+  onPositionChange(position :number) :void {
+    this.imagePosition = position;
+    this.imageDesc = this.imageList[position];
   }
 
 }
