@@ -8,6 +8,7 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { AppComponent } from './app.component';
 import { WallComponent } from './wall/wall.component';
 import { LoginComponent } from './login/login.component';
+import { SliderComponent } from './shared/components/slider/slider.component';
 
 /**
  * Routes
@@ -31,7 +32,8 @@ const appRoutes :Routes = [
   declarations: [
     AppComponent,
     WallComponent,
-    LoginComponent
+    LoginComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<div class="slider">
+
+  <div class="slider-item"
+    *ngFor="let slide of sliderImages; let i = index"
+    [ngClass]="{ 'active': i === position }"
+    [style.left]="77 * i + '%'"
+    [style.transform]="'translate3d('+ -110 * position +'%, 0, 0)'"
+    [style.backgroundImage]="'url(' + slide.images[0].source +')'"
+    (click)="onChangePosition(i)">
+    <!-- <img [src]="slide.images[0].source"> -->
+  </div>
+
+</div>
