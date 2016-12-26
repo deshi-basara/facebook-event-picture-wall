@@ -40,7 +40,10 @@ export class WallComponent implements OnInit {
     this.facebookService.getEventImages(this.event, this.token)
       .subscribe(
         (response) => {
-          this.imageList = response.data.slice().reverse();
+          const reversedResponse = response.data.slice().reverse();
+          // remove first entry (is event background)
+          reversedResponse.shift();
+          this.imageList = reversedResponse;
 
           setTimeout(() => {
             this.pullUpdates();
