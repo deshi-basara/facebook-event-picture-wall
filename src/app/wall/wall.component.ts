@@ -14,7 +14,7 @@ export class WallComponent implements OnInit {
   // facebook
   event :number;
   token :string;
-  pullInterval :number = 20000;
+  pullInterval :number = 10000;
 
   // slider
   imageList :Array<any> = [];
