@@ -11,27 +11,36 @@ export class SliderComponent implements OnInit {
 
   interval :number = 15000;
   position :number = 0;
+  lastPosition :number = 0;
 
   constructor() { }
 
   ngOnInit() :void {
     setInterval(() => {
       this.nextImage();
-    }, this.interval)
+    }, this.interval);
   }
 
   nextImage() :void {
-    // only increment if there are images left
-    if ((this.position + 1) < this.sliderImages.length) {
-      this.position++;
+    // only increment if there are no unshown images left
+    if ((this.lastPosition + 1) < this.sliderImages.length) {
+      this.lastPosition++;
 
-      // push new position to parent element
-      this.sliderPosition.emit(this.position);
+      this.position = this.lastPosition;
     }
+    else {
+      // nothing to increment, show a random image
+      const randomPosition = Math.floor(Math.random() * this.sliderImages.length);
+      this.position = randomPosition;
+    }
+
+    // push new position to parent element
+    this.sliderPosition.emit(this.position);
   }
 
   onChangePosition(position :number) {
     this.position = position;
+    this.lastPosition = position;
 
     // push new position to parent element
     this.sliderPosition.emit(this.position);
