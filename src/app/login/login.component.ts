@@ -32,9 +32,6 @@ export class LoginComponent implements OnInit {
     this.errorNotification = false;
     this.successNotification = false;
 
-    // TODO: Remove debug
-    this.loginModel.event = 247529759000573;
-
     // check if access-token and event is valid
     this.facebookService.checkEventId(this.loginModel.event, this.loginModel.token)
       .subscribe(
