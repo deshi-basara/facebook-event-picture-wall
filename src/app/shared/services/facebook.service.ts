@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class FacebookService {
-  baseUrl :string = 'https://graph.facebook.com';
+  baseUrl :string = 'https://graph.facebook.com/v2.8/';
 
   constructor(private http :Http) { }
 
@@ -48,7 +48,7 @@ export class FacebookService {
 
   getEventImages(eventId :number, token :string) :Observable<any> {
     return this.http
-      .get(`${this.baseUrl}/${eventId}/photos?access_token=${token}`)
+      .get(`${this.baseUrl}/${eventId}/photos?fields=images,from,created_time&access_token=${token}`)
       .map((res :Response) => res.json())
       .catch(this.handleError);
   }
