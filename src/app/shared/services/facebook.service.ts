@@ -48,7 +48,7 @@ export class FacebookService {
 
   getEventImages(eventId :number, token :string) :Observable<any> {
     return this.http
-      .get(`${this.baseUrl}/${eventId}/photos?fields=images,from,created_time&access_token=${token}`)
+      .get(`${this.baseUrl}/${eventId}/photos?fields=images,from,created_time&limit=100000&access_token=${token}`)
       .map((res :Response) => res.json())
       .catch(this.handleError);
   }
