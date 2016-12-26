@@ -9,7 +9,7 @@ export class SliderComponent implements OnInit {
   @Input() sliderImages :Array<string>;
   @Output() sliderPosition :EventEmitter<number> = new EventEmitter();
 
-  interval :number = 15000;
+  interval :number = 7000;
   position :number = 0;
   lastPosition :number = 0;
 
