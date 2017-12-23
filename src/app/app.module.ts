@@ -1,46 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
-import { Ng2Webstorage } from 'ng2-webstorage';
+
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { WallComponent } from './wall/wall.component';
-import { LoginComponent } from './login/login.component';
-import { SliderComponent } from './shared/components/slider/slider.component';
 
-/**
- * Routes
- */
-const appRoutes :Routes = [
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: '',
-    component: WallComponent
-  },
-  {
-    path: '**',
-    component: WallComponent
-  }
-];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WallComponent,
-    LoginComponent,
-    SliderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    Ng2Webstorage,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

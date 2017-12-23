@@ -1,14 +1,14 @@
-import { FacebookEventPictureWallPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('facebook-event-picture-wall App', function() {
-  let page: FacebookEventPictureWallPage;
+describe('facebook-event-picture-wall App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new FacebookEventPictureWallPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
