@@ -1,0 +1,8 @@
+@import "./_shared/_styles.scss";
+
+:host {
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+}

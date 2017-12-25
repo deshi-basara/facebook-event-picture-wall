@@ -1,0 +1,60 @@
+@import "../_shared/styles.scss";
+
+:host {
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+}
+
+.component-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: $color-black-1;
+
+  .login {
+    display: flex;
+    flex-direction: column;
+
+    width: 360px;
+    height: auto;
+    min-height: 320px;
+
+    padding: 48px 40px 36px;
+
+    background-color: $color-white-1;
+    box-shadow: $shadow-2;
+
+    .login-header {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        width: 37px;
+        height: auto;
+      }
+
+      .subline {
+        margin-top: -12px;
+        font-family: $font-secondary;
+        font-size: 16px;
+      }
+    }
+
+    .login-body {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      align-items: center;
+    }
+
+    .login-submit {
+      text-align: center;
+    }
+  }
+}

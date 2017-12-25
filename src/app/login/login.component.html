@@ -1,0 +1,28 @@
+<div class="component-login">
+
+  <div class="login">
+    <div class="login-header">
+      <img src="assets/logos/facebook.png">
+      <h1>Login</h1>
+      <div class="subline">
+        Insert your Event and Login with Facebook
+      </div>
+    </div>
+
+    <div class="login-body">
+      <div class="form-group">
+        <input class="input" type="text"
+          placeholder="Event-Id from URL"
+          [(ngModel)]="eventId">
+      </div>
+    </div>
+
+    <div class="login-submit">
+      <button type="button" class="button button-primary"
+        (click)="onLogin()">
+        Login
+      </button>
+    </div>
+  </div>
+
+</div>
