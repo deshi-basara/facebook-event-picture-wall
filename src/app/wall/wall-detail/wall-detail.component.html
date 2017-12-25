@@ -1,3 +1,14 @@
-<p>
-  wall-detail works!
-</p>
+<div class="component-wall-detail">
+  <!-- Image Detail -->
+  <div class="image-detail" *ngIf="visibleImage">
+    <div class="image-background"
+      [style.backgroundImage]="'url('+ visibleImage.url +')'">
+    </div>
+    <div class="image-revealer" [ngClass]="{ 'show': showImage, 'hide': !showImage }"></div>
+  </div>
+
+  <!-- Image Metadata -->
+  <!-- <div class="image-data">
+    Meta
+  </div> -->
+</div>

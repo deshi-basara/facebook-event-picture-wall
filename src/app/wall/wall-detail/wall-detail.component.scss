@@ -1,0 +1,101 @@
+@import "../../_shared/styles.scss";
+
+.component-wall-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: $color-black-1;
+
+  .image-detail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 70%;
+    width: 80%;
+
+    .image-background {
+      position: relative;
+
+      height: 100%;
+      width: 100%;
+
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: contain;
+      transition: transform 0.2s ease-out;
+
+      border-radius: 2px;
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12))
+							drop-shadow(0 3px 1px rgba(0, 0, 0, 0.14))
+							drop-shadow(0 1px 5px rgba(0, 0, 0, 0.12))
+							drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.1));
+
+      z-index: 1;
+    }
+
+    .image-revealer {
+      position: absolute;
+      width: calc(100% + 50px);
+      height: calc(100% + 50px);
+      background: $color-black-1;
+      top: -25px;
+      left: -25px;
+      opacity: 0;
+      pointer-events: none;
+
+      transform-origin: 0% 50%;
+
+      z-index: 2;
+      // transition: opacity 0.8s ease-in-out;
+
+      &.hide {
+        transform-origin: 100% 50%;
+
+        opacity: 1;
+        animation: hideX 0.8s cubic-bezier(0.7,0,0.3,1) forwards;
+      }
+
+      &.show {
+        opacity: 1;
+        animation: showX 0.8s cubic-bezier(0.7,0,0.3,1) forwards;
+      }
+    }
+
+    img {
+      width: 80%;
+      height: auto;
+
+      border-radius: 2px;
+      box-shadow: $shadow-1;
+
+    }
+  }
+}
+
+//
+// Hide from left to right
+//
+@keyframes hideX {
+  from {
+		transform: scale3d(0,1,1);
+  }
+  to {
+    transform: scale3d(1,1,1);
+  }
+}
+
+//
+// Show from left to right
+//
+@keyframes showX {
+	to {
+		transform: scale3d(0,1,1);
+	}
+}

@@ -39,6 +39,8 @@ export class EventService {
     const token = this.localStorage.retrieve('s-token');
     const url = `${this.graphUrl}/${eventId}/photos?fields=images,from,created_time&limit=100000&access_token=${token}`;
 
+    console.log(url);
+
     return this.http.get(url);
   }
 
