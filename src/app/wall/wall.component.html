@@ -1,12 +1,12 @@
 <div class="component-wall">
   <!-- Image Detail -->
   <app-wall-detail
-    [image]="imageVisible">
+    [item]="feedItemVisible">
   </app-wall-detail>
 
   <!-- All available Images -->
   <app-wall-images
-    *ngIf="imageList.length > 0"
+    *ngIf="feedList.length > 0"
     [images]="imageList">
   </app-wall-images>
 </div>

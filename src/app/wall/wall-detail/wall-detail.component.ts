@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 
 import { EventService } from '../../_shared/services/event.service';
 import { Image } from '../../_shared/models/image.model';
+import { Post } from '../../_shared/models/post.model';
 
 @Component({
   selector: 'app-wall-detail',
@@ -9,11 +10,11 @@ import { Image } from '../../_shared/models/image.model';
   styleUrls: ['./wall-detail.component.scss']
 })
 export class WallDetailComponent implements OnInit, OnChanges {
-  @Input() image: Image;
+  @Input() item: (Image | Post);
 
-  visibleImage: Image;
+  visibleItem: (Image | Post);
   userImage: string;
-  showImage: boolean;
+  showItem: boolean;
 
   constructor(
     private eventService: EventService,
@@ -23,19 +24,21 @@ export class WallDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes.image.currentValue) {
+    if (!changes.item.currentValue) {
       return;
     }
 
-    // fade current image out
-    this.showImage = false;
+    // fade current item out
+    this.showItem = false;
 
     setTimeout(() => {
       // get profile picture of creator
-      this.userImage = this.eventService.getUserImageUrl(changes.image.currentValue.fromId);
+      this.userImage = this.eventService.getUserImageUrl(changes.item.currentValue.fromId);
 
-      this.visibleImage = changes.image.currentValue;
-      this.showImage = true;
+      this.visibleItem = changes.item.currentValue;
+      this.showItem = true;
+
+      console.log(this.visibleItem);
     }, 1000);
   }
 }

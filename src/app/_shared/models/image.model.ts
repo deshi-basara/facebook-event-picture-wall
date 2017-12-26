@@ -3,15 +3,16 @@ export class Image {
   url: string;
   from: string;
   fromId: string;
+  name: string;
   createdAt: string;
+  type: string = 'image';
 
-  wasDisplayed: boolean = false;
-
-  constructor(id: string, url: string, from: string, fromId: string, createdAt: string) {
+  constructor(id: string, url: string, from: string, fromId: string, name: string, createdAt: string) {
     this.id = id;
     this.url = url;
     this.from = from;
     this.fromId = fromId;
+    this.name = name;
     this.createdAt = createdAt;
   }
 };

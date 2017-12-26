@@ -1,20 +1,25 @@
-<div class="component-wall-detail" *ngIf="visibleImage">
+<div class="component-wall-detail">
   <!-- Image Detail -->
-  <div class="image-detail">
+  <div class="image-detail" *ngIf="visibleItem">
     <div class="image-background"
-      [style.backgroundImage]="'url('+ visibleImage.url +')'">
+      *ngIf="visibleItem.type === 'image'"
+      [style.backgroundImage]="'url('+ visibleItem.url +')'">
     </div>
-    <div class="image-revealer" [ngClass]="{ 'show': showImage, 'hide': !showImage }"></div>
+    <div class="post-text"
+      *ngIf="visibleItem.type === 'post'">
+        {{ visibleItem.message }}
+    </div>
+    <div class="image-revealer" [ngClass]="{ 'show': showItem, 'hide': !showItem }"></div>
   </div>
 
   <!-- Image Metadata -->
-  <div class="image-data" [ngClass]="{ 'hide': !showImage }">
+  <div class="image-data" [ngClass]="{ 'hide': !showItem }" *ngIf="visibleItem">
     <div class="author-image" *ngIf="userImage">
       <img [src]="userImage">
     </div>
     <div class="author-meta">
-      <h2>{{ visibleImage.from }}</h2>
-      <div class="time">{{ visibleImage.createdAt | date:'shortTime' }}</div>
+      <h2>{{ visibleItem.from }}</h2>
+      <div class="time">{{ visibleItem.createdAt || visibleItem.updatedAt | date:'shortTime' }}</div>
     </div>
   </div>
 </div>

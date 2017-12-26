@@ -20,6 +20,16 @@
     height: 70%;
     width: 80%;
 
+    .post-text {
+      padding: 45px;
+
+      border-radius: 2px;
+      background-color: $color-white-1;
+      box-shadow: $shadow-1;
+
+      font-size: 28px;
+    }
+
     .image-background {
       position: relative;
 

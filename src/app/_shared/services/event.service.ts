@@ -37,7 +37,14 @@ export class EventService {
 
   getEventImages(eventId): Observable<any> {
     const token = this.localStorage.retrieve('l-token');
-    const url = `${this.graphUrl}/${eventId}/photos?fields=images,from,created_time&limit=100000&access_token=${token}`;
+    const url = `${this.graphUrl}/${eventId}/photos?fields=images,from,created_time,name&limit=100000&access_token=${token}`;
+
+    return this.http.get(url);
+  }
+
+  getEventFeed(eventId): Observable<any> {
+    const token = this.localStorage.retrieve('l-token');
+    const url = `${this.graphUrl}/${eventId}/feed?fields=message,from,created_time&limit=1000&access_token=${token}`;
 
     return this.http.get(url);
   }
