@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class AuthService {
   graphUrl: string;
+  apiUrl: string;
 
   constructor(
     private http: HttpClient,
@@ -17,6 +18,7 @@ export class AuthService {
     private localStorage: LocalStorageService,
   ) {
     this.graphUrl = environment.facebook.graphUrl;
+    this.apiUrl = environment.apiUrl;
 
     // init fb-sdk
     let initParams: InitParams = {
@@ -40,10 +42,17 @@ export class AuthService {
       .catch((error: any) => console.error(error));
   }
 
-  doRequestLongtimeToken(): Promise<void> {
-    console.log('request long time');
+  doRequestLongtimeToken(): Observable<void> {
+    const token = this.localStorage.retrieve('s-token');
+    const url = `${this.apiUrl}/auth/${token}`;
 
-    return Promise.resolve();
+    return this.http.get(url)
+      .map((response: any) => {
+        console.log(response);
+
+        // save long-time token
+        this.localStorage.store('l-token', response.access_token);
+      });
   }
 
 }

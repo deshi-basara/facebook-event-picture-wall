@@ -26,10 +26,12 @@ export class LoginComponent implements OnInit {
     }
 
     return this.authService.doLoginWithFacebook()
-      .then(() => this.authService.doRequestLongtimeToken())
       .then(() => {
-        // redirect to wall
-        this.router.navigate(['/wall', this.eventId]);
+        this.authService.doRequestLongtimeToken()
+          .subscribe(() => {
+            // redirect to wall
+            this.router.navigate(['/wall', this.eventId]);
+          });
       });
   }
 }

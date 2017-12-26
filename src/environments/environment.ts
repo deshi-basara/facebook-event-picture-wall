@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'localhost:3000',
   facebook: {
     appId: '568277443517279',
     xfbml: true,
