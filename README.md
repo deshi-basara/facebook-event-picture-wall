@@ -1,14 +1,11 @@
 # Facebook-Event-Picture-Wall
 
-Facebook-Event-Picture-Wall is a small Angular5 project, that fetches all pictures from a
-facebook-event and presents them on an image-slider. New pictures in the facebook-event will be
-pulled intermittently.
+Facebook-Event-Picture-Wall is a small Angular5 project, that fetches all pictures and posts from a
+facebook-event and presents them on an image-wall. New pictures and posts in the facebook-event will be pulled intermittently.
 
-**Note:** All code is executed on the client-side, that's why we can't request a long-time
-facebook-access-token. If you use this project, you have to re-login when the short-time acces-token
-expires (approximately every 2 hours).
+**Note:** If you want a long-time-access-token for Facebook, you have to run the small express-server and change the `config.js`.
 
-**Demo:** [upl.i-was-perfect.net](http://upl.i-was-perfect.net/)
+**Demo:** [fb.i-was-perfect.net](https://fb.i-was-perfect.net/)
 
 ## Requirements
 
@@ -26,4 +23,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Todo
 
-* Implement a small server, that requests a long-time facebook-access-token
+* Improved error-feedback (at the moment errors are just printed to console)
