@@ -1,6 +1,6 @@
-<div class="component-wall-detail">
+<div class="component-wall-detail" *ngIf="visibleImage">
   <!-- Image Detail -->
-  <div class="image-detail" *ngIf="visibleImage">
+  <div class="image-detail">
     <div class="image-background"
       [style.backgroundImage]="'url('+ visibleImage.url +')'">
     </div>
@@ -8,7 +8,13 @@
   </div>
 
   <!-- Image Metadata -->
-  <!-- <div class="image-data">
-    Meta
-  </div> -->
+  <div class="image-data" [ngClass]="{ 'hide': !showImage }">
+    <div class="author-image" *ngIf="userImage">
+      <img [src]="userImage">
+    </div>
+    <div class="author-meta">
+      <h2>{{ visibleImage.from }}</h2>
+      <div class="time">{{ visibleImage.createdAt | date:'shortTime' }}</div>
+    </div>
+  </div>
 </div>

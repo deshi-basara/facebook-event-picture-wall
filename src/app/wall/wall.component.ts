@@ -88,19 +88,24 @@ export class WallComponent implements OnInit, OnDestroy {
   }
 
   private extractImages(imageData): void {
-    for (let i = 0; i < imageData.length; i++) {
-      const { id } = imageData[i];
+    // remove first item, is event background
+    const reversedImageData = imageData.slice().reverse();
+    reversedImageData.shift();
+
+    for (let i = 0; i < reversedImageData.length; i++) {
+      const { id } = reversedImageData[i];
 
       // only push new images to the imageList
       const imageAlreadyAdded = _.find(this.imageList, { id: id });
       if (!imageAlreadyAdded) {
-        const { images, created_time, from } = imageData[i];
+        const { images, created_time, from } = reversedImageData[i];
 
         // create image-instance
         const newImage = new Image(
           id,
           images[0].source,
           from.name,
+          from.id,
           created_time,
         );
 

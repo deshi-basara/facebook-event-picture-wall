@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { WallComponent } from './wall/wall.component';
 import { WallDetailComponent } from './wall/wall-detail/wall-detail.component';
 import { WallImagesComponent } from './wall/wall-images/wall-images.component';
+import { ColumnPipe } from './_shared/pipes/column.pipe';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { WallImagesComponent } from './wall/wall-images/wall-images.component';
     LoginComponent,
     WallComponent,
     WallDetailComponent,
-    WallImagesComponent
+    WallImagesComponent,
+    ColumnPipe
   ],
   imports: [
     BrowserModule,

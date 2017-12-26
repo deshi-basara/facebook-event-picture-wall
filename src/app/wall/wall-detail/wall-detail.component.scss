@@ -77,6 +77,50 @@
 
     }
   }
+
+  .image-data {
+    display: flex;
+
+    margin-top: 50px;
+    height: 100px;
+    color: $color-white-1;
+
+    opacity: 1;
+    transition: all 0.7s ease-in-out;
+
+    &.hide {
+      opacity: 0;
+    }
+
+    .author-image {
+      height: 70px;
+      width: 70px;
+
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .author-meta {
+      margin-top: 12px;
+      margin-left: 25px;
+
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+
+      .time {
+        margin-top: 7px;
+        color: $color-white-2;
+      }
+
+    }
+  }
 }
 
 //

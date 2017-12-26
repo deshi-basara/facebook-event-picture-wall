@@ -44,11 +44,17 @@ export class EventService {
     return this.http.get(url);
   }
 
-  getImageUrl(imageId :number) :Observable<any> {
+  getImageUrl(imageId :number): Observable<any> {
     const token = this.localStorage.retrieve('s-token');
     const url = `${this.graphUrl}/${imageId}/picture?access_token=${token}`;
 
     return this.http.get(url);
+  }
+
+  getUserImageUrl(userId: number): string {
+    const url = `${this.graphUrl}/${userId}/picture?type=large&w‌​idth=100&height=100`;
+
+    return url;
   }
 
 }

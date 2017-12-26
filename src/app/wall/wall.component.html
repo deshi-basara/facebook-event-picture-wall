@@ -5,5 +5,8 @@
   </app-wall-detail>
 
   <!-- All available Images -->
-  <app-wall-images></app-wall-images>
+  <app-wall-images
+    *ngIf="imageList.length > 0"
+    [images]="imageList">
+  </app-wall-images>
 </div>

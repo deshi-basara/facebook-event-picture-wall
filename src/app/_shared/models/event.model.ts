@@ -1,6 +1,5 @@
 export class Event {
   id: number;
   name: string;
-  start_time: string;
-  images: Array<string> = [];
+  startTime: string;
 }

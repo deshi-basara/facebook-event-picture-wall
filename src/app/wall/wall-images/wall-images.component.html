@@ -1,3 +1,17 @@
-<p>
-  wall-images works!
-</p>
+<div class="component-wall-images">
+
+  <!-- <div class="wall-images-header">
+    Header
+  </div> -->
+
+  <div id="wall-images">
+    <div id="wall-images-scroll-container">
+      <div class="column">
+        <img *ngFor="let image of images | column:0" [src]="image.url" />
+      </div>
+      <div class="column">
+        <img *ngFor="let image of images | column:1" [src]="image.url" />
+      </div>
+    </div>
+  </div>
+</div>
