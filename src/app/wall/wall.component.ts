@@ -97,6 +97,8 @@ export class WallComponent implements OnInit, OnDestroy {
   }
 
   private extractImages(imageData): void {
+    let hasChanges = false;
+
     // remove first item, is event background
     const reversedImageData = imageData.slice().reverse();
     reversedImageData.shift();
@@ -125,7 +127,14 @@ export class WallComponent implements OnInit, OnDestroy {
         this.feedList.push(newImage);
         this.feedQueue.push(newImage);
         this.imageList.push(newImage);
+
+        hasChanges = true;
       }
+    }
+
+    // update imageList array on changes, to trigger change detection
+    if (hasChanges) {
+      this.imageList = this.imageList.slice(0);
     }
   }
 

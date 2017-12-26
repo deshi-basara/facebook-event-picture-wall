@@ -37,8 +37,6 @@ export class WallDetailComponent implements OnInit, OnChanges {
 
       this.visibleItem = changes.item.currentValue;
       this.showItem = true;
-
-      console.log(this.visibleItem);
     }, 1000);
   }
 }

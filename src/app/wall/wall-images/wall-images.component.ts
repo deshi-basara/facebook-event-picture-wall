@@ -18,8 +18,10 @@ export class WallImagesComponent implements OnInit, OnChanges {
     }, 300);
   }
 
-  ngOnChanges() {
-    this.scrollToBottom();
+  ngOnChanges(changes: SimpleChanges) {
+    setTimeout(() => {
+      this.scrollToBottom();
+    }, 1500);
   }
 
   private scrollToBottom(): void {
