@@ -114,17 +114,18 @@ export class WallComponent implements OnInit, OnDestroy {
         this.imageQueue.push(newImage);
       }
     }
-
-    console.log(this.imageList.length);
   }
 
   private imageChanger(): void {
-    console.log('imageChanger');
+    // skip image changing, if there are no images
+    if (this.imageList.length === 0) {
+      return;
+    }
 
     // copy a random image if imageQueue is empty
     if (this.imageQueue.length === 0) {
-      console.log('random');
-      return;
+      const randomImage = this.imageList[Math.floor(Math.random() * this.imageList.length)];
+      this.imageQueue.push(randomImage);
     }
 
     // select the first image in imageQueue and remove it from queue
