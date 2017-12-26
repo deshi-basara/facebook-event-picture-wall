@@ -24,3 +24,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Todo
 
 * Improved error-feedback (at the moment errors are just printed to console)
+* Implement logout and auth-guard
+* 404-Feedback for wrong Event-IDs

@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.eventId = '357027377978177';
   }
 
   onLogin(): Promise<void> {
