@@ -48,8 +48,6 @@ export class AuthService {
 
     return this.http.get(url)
       .map((response: any) => {
-        console.log(response);
-
         // save long-time token
         this.localStorage.store('l-token', response.access_token);
       });

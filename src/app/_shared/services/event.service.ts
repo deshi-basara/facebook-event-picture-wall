@@ -29,23 +29,21 @@ export class EventService {
   }
 
   getEvent(eventId): Observable<Event> {
-    const token = this.localStorage.retrieve('s-token');
+    const token = this.localStorage.retrieve('l-token');
     const url = `${this.graphUrl}/${eventId}?access_token=${token}`;
 
     return this.http.get<Event>(url);
   }
 
   getEventImages(eventId): Observable<any> {
-    const token = this.localStorage.retrieve('s-token');
+    const token = this.localStorage.retrieve('l-token');
     const url = `${this.graphUrl}/${eventId}/photos?fields=images,from,created_time&limit=100000&access_token=${token}`;
-
-    console.log(url);
 
     return this.http.get(url);
   }
 
   getImageUrl(imageId :number): Observable<any> {
-    const token = this.localStorage.retrieve('s-token');
+    const token = this.localStorage.retrieve('l-token');
     const url = `${this.graphUrl}/${imageId}/picture?access_token=${token}`;
 
     return this.http.get(url);
