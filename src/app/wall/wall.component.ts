@@ -198,8 +198,6 @@ export class WallComponent implements OnInit, OnDestroy {
   }
 
   private feedChanger(): void {
-    console.log(this.feedList);
-
     // skip image changing, if there are no images
     if (this.feedList.length === 0) {
       return;
