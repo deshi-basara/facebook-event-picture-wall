@@ -10,6 +10,7 @@ import { EventService } from '../_shared/services/event.service';
 import { Event } from '../_shared/models/event.model';
 import { Image } from '../_shared/models/image.model';
 import { Post } from '../_shared/models/post.model';
+import { imageBlacklist, postBlacklist } from './blacklist';
 
 @Component({
   selector: 'app-wall',
@@ -119,6 +120,11 @@ export class WallComponent implements OnInit, OnDestroy {
     for (let i = 0; i < reversedImageData.length; i++) {
       const { id } = reversedImageData[i];
 
+      // check if the current image was blacklisted
+      if (imageBlacklist.indexOf(id) !== -1) {
+        continue;
+      }
+
       // only push new images to the feedList
       const imageAlreadyAdded = _.find(this.feedList, { id: id });
       if (!imageAlreadyAdded) {
@@ -160,6 +166,11 @@ export class WallComponent implements OnInit, OnDestroy {
         continue;
       }
 
+      // check if the current post was blacklisted
+      if (postBlacklist.indexOf(id) !== -1) {
+        continue;
+      }
+
       // filter messages that belong to an image
       const belongsToImage = _.find(this.imageList, { name: message });
       if (belongsToImage) {
@@ -187,6 +198,8 @@ export class WallComponent implements OnInit, OnDestroy {
   }
 
   private feedChanger(): void {
+    console.log(this.feedList);
+
     // skip image changing, if there are no images
     if (this.feedList.length === 0) {
       return;

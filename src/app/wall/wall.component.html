@@ -1,7 +1,7 @@
 <div class="component-wall">
 
   <!-- Empty state -->
-  <div class="wall-empty" *ngIf="feedList.length === 0">
+  <div class="wall-empty" *ngIf="!feedItemVisible">
     No pictures or posts available yet <i class="material-icons">sentiment_dissatisfied</i>
   </div>
 
@@ -12,7 +12,7 @@
 
   <!-- All available Images -->
   <app-wall-images
-    *ngIf="feedList.length > 0"
+    *ngIf="imageList.length > 0 && feedItemVisible"
     [images]="imageList">
   </app-wall-images>
 
