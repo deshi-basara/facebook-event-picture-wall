@@ -34,8 +34,6 @@ export class AuthService {
         scope: 'user_events',
       })
       .then((response: LoginResponse) => {
-        console.log(response);
-
         // save short-time token
         this.localStorage.store('s-token', response.authResponse.accessToken);
       })

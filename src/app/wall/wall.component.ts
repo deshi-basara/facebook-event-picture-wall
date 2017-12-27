@@ -18,6 +18,7 @@ import { Post } from '../_shared/models/post.model';
 })
 export class WallComponent implements OnInit, OnDestroy {
   event: Event;
+  errorFeedback: string;
 
   pullInterval: number = 10000;
   changeInterval: number = 10000;
@@ -60,14 +61,16 @@ export class WallComponent implements OnInit, OnDestroy {
         },
         (error) => {
           if (error.status === 404) {
-            console.error('EventNotFound');
+            this.errorFeedback = 'EventNotFound: Please check the entered ID';
           } else if (error.status === 400) {
-            console.error('TokenExpired');
+            this.errorFeedback = 'TokenExpired: Please login again, redirecting in 7 seconds';
 
-            this.router.navigate(['/login']);
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 7000);
+          } else {
+            this.errorFeedback = `${error.name}: ${error.message}`;
           }
-
-          console.error(error);
         });
   }
 
@@ -91,7 +94,17 @@ export class WallComponent implements OnInit, OnDestroy {
           }, this.pullInterval);
         },
         (error) => {
-          console.log('error', error);
+          if (error.status === 404) {
+            this.errorFeedback = 'EventNotFound: Please check the entered ID';
+          } else if (error.status === 400) {
+            this.errorFeedback = 'TokenExpired: Please login again, redirecting in 7 seconds';
+
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 7000);
+          } else {
+            this.errorFeedback = `${error.name}: ${error.message}`;
+          }
         }
       );
   }

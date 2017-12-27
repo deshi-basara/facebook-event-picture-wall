@@ -20,4 +20,25 @@
   app-wall-images {
     flex: 1;
   }
+
+  .wall-empty {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $color-black-1;
+    color: $color-white-1;
+    font-size: 28px;
+
+    i {
+      margin-left: 10px;
+      font-size: 45px;
+    }
+  }
 }

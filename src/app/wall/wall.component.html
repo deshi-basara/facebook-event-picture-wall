@@ -1,4 +1,10 @@
 <div class="component-wall">
+
+  <!-- Empty state -->
+  <div class="wall-empty" *ngIf="feedList.length === 0">
+    No pictures or posts available yet <i class="material-icons">sentiment_dissatisfied</i>
+  </div>
+
   <!-- Image Detail -->
   <app-wall-detail
     [item]="feedItemVisible">
@@ -9,4 +15,8 @@
     *ngIf="feedList.length > 0"
     [images]="imageList">
   </app-wall-images>
+
+  <div class="error-feedback" *ngIf="errorFeedback">
+    {{ errorFeedback }}
+  </div>
 </div>

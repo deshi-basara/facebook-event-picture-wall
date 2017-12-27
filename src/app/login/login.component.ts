@@ -9,7 +9,8 @@ import { AuthService } from '../_shared/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  eventId: string;
+  eventId: string = '';
+  errorFeedback: string;
 
   constructor(
     private router: Router,
@@ -21,16 +22,26 @@ export class LoginComponent implements OnInit {
 
   onLogin(): Promise<void> {
     if (this.eventId.length === 0) {
+      this.errorFeedback = 'Please enter an Event-Id';
       return;
     }
 
     return this.authService.doLoginWithFacebook()
       .then(() => {
         this.authService.doRequestLongtimeToken()
-          .subscribe(() => {
+          .subscribe(
+            () => {
             // redirect to wall
             this.router.navigate(['/wall', this.eventId]);
-          });
+            },
+            (error) => {
+              if (error.statusText === 'Unknown Error') {
+                this.errorFeedback = `${error.name}: API-Server is not available`;
+              } else {
+                this.errorFeedback = `${error.name}: ${error.message}`;
+              }
+            }
+          );
       });
   }
 }
